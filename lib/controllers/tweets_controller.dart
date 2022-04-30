@@ -2,18 +2,18 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-Future main() async {
+Future getManyTweets() async {
   List list = [];
 
   for (var i = 0; i < 3; i++) {
-    final tweet = await fetch();
+    final tweet = await fetchTweet();
     list.add(tweet);
   }
 
-  print(list[0].quote);
+  return list;
 }
 
-Future<Tweet> fetch() async {
+Future<Tweet> fetchTweet() async {
   var url = 'https://api.kanye.rest';
   var response = await http.get(Uri.parse(url));
   var json = jsonDecode(response.body);
