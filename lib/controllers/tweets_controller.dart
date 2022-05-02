@@ -5,29 +5,29 @@ import 'package:http/http.dart' as http;
 Future getManyTweets() async {
   List list = [];
 
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < 3; i++) {
     final tweet = await fetchTweet();
-    list.add(tweet.quote);
+    list.contains(tweet) ? null : list.add(tweet.quote);
   }
 
   return list;
 }
 
-Future<Tweet> fetchTweet() async {
+Future<TweetModel> fetchTweet() async {
   var url = 'https://api.kanye.rest';
   var response = await http.get(Uri.parse(url));
   var json = jsonDecode(response.body);
 
-  var tweet = Tweet.fromJson(json);
+  var tweet = TweetModel.fromJson(json);
   return tweet;
 }
 
-class Tweet {
+class TweetModel {
   final String quote;
 
-  Tweet({required this.quote});
+  TweetModel({required this.quote});
 
-  factory Tweet.fromJson(Map json) {
-    return Tweet(quote: json['quote']);
+  factory TweetModel.fromJson(Map json) {
+    return TweetModel(quote: json['quote']);
   }
 }

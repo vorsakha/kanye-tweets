@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kanye_tweets/views/home_view.dart';
 
-import 'controllers/app_controller.dart';
+import 'controllers/theme_controller.dart';
 
 void main() {
   runApp(const MyApp());
