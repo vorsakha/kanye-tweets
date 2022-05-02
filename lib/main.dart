@@ -16,14 +16,14 @@ class MyApp extends StatelessWidget {
       animation: AppController.instance,
       builder: (context, child) {
         return MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Kanye Tweets',
           theme: ThemeData(
             brightness: AppController.instance.isDarkThemed
                 ? Brightness.dark
                 : Brightness.light,
             primarySwatch: Colors.red,
           ),
-          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          home: const MyHomePage(title: 'Kanye Tweets'),
         );
       },
     );
