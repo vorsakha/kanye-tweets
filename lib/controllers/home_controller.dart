@@ -1,19 +1,20 @@
+import 'package:flutter/material.dart';
 import 'package:kanye_tweets/controllers/tweets_controller.dart';
 
 class HomeController {
   List tweets = [];
 
-  HomeState state = HomeState.start;
+  final state = ValueNotifier(HomeState.start);
 
   Future start() async {
-    state = HomeState.loading;
+    state.value = HomeState.loading;
 
     try {
       tweets = await getManyTweets();
 
-      state = HomeState.success;
+      state.value = HomeState.success;
     } catch (e) {
-      state = HomeState.error;
+      state.value = HomeState.error;
     }
   }
 }

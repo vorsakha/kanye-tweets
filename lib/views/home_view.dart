@@ -14,19 +14,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final controller = HomeController();
 
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   _success() {
     return ListView.builder(
       itemCount: controller.tweets.length,
       itemBuilder: (context, index) {
         var tweet = controller.tweets[index];
+
         return ListTile(
           title: Text('tile $tweet'),
         );
@@ -80,9 +73,19 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
           actions: [
             CustomSwitch(),
+            IconButton(
+                onPressed: () {
+                  controller.start();
+                },
+                icon: const Icon(Icons.refresh_outlined))
           ],
         ),
-        body: stateManagement(HomeState.start));
+        body: AnimatedBuilder(
+          animation: controller.state,
+          builder: (context, child) {
+            return stateManagement(controller.state.value);
+          },
+        ));
   }
 }
 

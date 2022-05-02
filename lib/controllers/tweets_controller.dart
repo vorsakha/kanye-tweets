@@ -5,9 +5,9 @@ import 'package:http/http.dart' as http;
 Future getManyTweets() async {
   List list = [];
 
-  for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < 2; i++) {
     final tweet = await fetchTweet();
-    list.add(tweet);
+    list.add(tweet.quote);
   }
 
   return list;
