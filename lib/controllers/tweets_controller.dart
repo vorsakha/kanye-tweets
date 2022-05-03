@@ -11,7 +11,8 @@ class TweetsController {
     state.value = TweetState.loading;
 
     try {
-      tweets = await repository.fetchTweets();
+      var _newTweets = await repository.fetchTweets();
+      tweets = [...tweets, ..._newTweets];
 
       state.value = TweetState.success;
     } catch (e) {
