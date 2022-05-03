@@ -10,7 +10,9 @@ class Timeline extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       scrollDirection: Axis.vertical,
-      physics: const NeverScrollableScrollPhysics(),
+      physics: ModalRoute.of(context)?.settings.name as String != "/profile"
+          ? null
+          : const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: list.length,
       itemBuilder: (context, index) {
