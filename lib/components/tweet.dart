@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kanye_tweets/views/profile_view.dart';
 
 class Tweet extends StatelessWidget {
   final String tweet;
@@ -13,19 +14,25 @@ class Tweet extends StatelessWidget {
       decoration: BoxDecoration(
         color: color ?? Colors.redAccent,
         border: const Border(
-          bottom: BorderSide(
-            width: 0.7,
-            color: Color.fromARGB(255, 255, 130, 142),
-          ),
-        ),
+            bottom: BorderSide(
+          width: 0.5,
+          color: Color.fromARGB(255, 255, 194, 201),
+        )),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CircleAvatar(
-            backgroundImage: AssetImage('assets/images/ye.jpg'),
-            backgroundColor: Colors.black,
-            radius: 30,
+          TextButton(
+            onPressed: () {
+              ModalRoute.of(context)?.settings.name as String != "/profile"
+                  ? Navigator.pushNamed(context, '/profile')
+                  : null;
+            },
+            child: const CircleAvatar(
+              backgroundImage: AssetImage('assets/images/ye.jpg'),
+              backgroundColor: Colors.black,
+              radius: 30,
+            ),
           ),
           const SizedBox(width: 10),
           Flexible(

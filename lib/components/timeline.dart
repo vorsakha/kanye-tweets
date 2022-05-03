@@ -16,9 +16,7 @@ class Timeline extends StatelessWidget {
       itemBuilder: (context, index) {
         return Tweet(
             tweet: list[index],
-            color: index % 2 == 0
-                ? Colors.white
-                : Color.fromARGB(255, 255, 187, 187));
+            color: index % 2 == 0 ? Colors.white : Colors.white);
       },
     );
   }

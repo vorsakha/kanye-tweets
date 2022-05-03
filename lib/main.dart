@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kanye_tweets/views/home_view.dart';
+import 'package:kanye_tweets/views/profile_view.dart';
 
 import 'controllers/theme_controller.dart';
 
@@ -23,7 +24,11 @@ class MyApp extends StatelessWidget {
                 : Brightness.light,
             primarySwatch: Colors.red,
           ),
-          home: const MyHomePage(title: 'Kanye Tweets'),
+          initialRoute: '/',
+          routes: {
+            '/': (context) => const MyHomePage(title: 'Kanye Tweets'),
+            '/profile': (context) => const Profile(),
+          },
         );
       },
     );
