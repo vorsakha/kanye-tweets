@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kanye_tweets/components/timeline.dart';
 import 'package:kanye_tweets/controllers/theme_controller.dart';
-import 'package:kanye_tweets/controllers/home_controller.dart';
+import 'package:kanye_tweets/controllers/tweets_controller.dart';
 import 'package:kanye_tweets/views/profile_view.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -14,7 +14,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final controller = HomeController();
+  final controller = TweetsController();
 
   _success() {
     return Timeline(
@@ -39,15 +39,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container();
   }
 
-  stateManagement(HomeState state) {
+  stateManagement(TweetState state) {
     switch (state) {
-      case HomeState.start:
+      case TweetState.start:
         return _start();
-      case HomeState.loading:
+      case TweetState.loading:
         return _loading();
-      case HomeState.error:
+      case TweetState.error:
         return _error();
-      case HomeState.success:
+      case TweetState.success:
         return _success();
 
       default:
@@ -71,8 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             TextButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Profile()));
+                Navigator.pushNamed(context, '/profile');
               },
               child: const CircleAvatar(
                 backgroundImage: AssetImage('assets/images/ye.jpg'),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kanye_tweets/components/profile/profile_body.dart';
 import 'package:kanye_tweets/components/profile/profile_header.dart';
 import 'package:kanye_tweets/components/timeline.dart';
-import 'package:kanye_tweets/controllers/home_controller.dart';
+import 'package:kanye_tweets/controllers/tweets_controller.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  final controller = HomeController();
+  final controller = TweetsController();
 
   _success() {
     return SingleChildScrollView(
@@ -46,15 +46,15 @@ class _ProfileState extends State<Profile> {
     return Container();
   }
 
-  stateManagement(HomeState state) {
+  stateManagement(TweetState state) {
     switch (state) {
-      case HomeState.start:
+      case TweetState.start:
         return _start();
-      case HomeState.loading:
+      case TweetState.loading:
         return _loading();
-      case HomeState.error:
+      case TweetState.error:
         return _error();
-      case HomeState.success:
+      case TweetState.success:
         return _success();
 
       default:
