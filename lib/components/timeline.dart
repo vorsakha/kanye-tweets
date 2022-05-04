@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:kanye_tweets/components/tweet.dart';
 
-class Timeline extends StatefulWidget {
-  const Timeline({Key? key, required this.data}) : super(key: key);
+class Timeline extends StatelessWidget {
+  final List list;
 
-  final List data;
+  const Timeline({Key? key, required this.list}) : super(key: key);
 
-  @override
-  State<Timeline> createState() => _TimelineState();
-}
-
-class _TimelineState extends State<Timeline> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return ListView.builder(
+      scrollDirection: Axis.vertical,
+      physics: ModalRoute.of(context)?.settings.name as String != "/profile"
+          ? null
+          : const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: list.length,
+      itemBuilder: (context, index) {
+        return Tweet(
+            tweet: list[index],
+            color: index % 2 == 0 ? Colors.white : Colors.white);
+      },
+    );
   }
 }

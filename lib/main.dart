@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kanye_tweets/views/home_view.dart';
+import 'package:kanye_tweets/views/profile_view.dart';
 
-import 'controllers/app_controller.dart';
+import 'controllers/theme_controller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,14 +17,18 @@ class MyApp extends StatelessWidget {
       animation: AppController.instance,
       builder: (context, child) {
         return MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Kanye Tweets',
           theme: ThemeData(
             brightness: AppController.instance.isDarkThemed
                 ? Brightness.dark
                 : Brightness.light,
             primarySwatch: Colors.red,
           ),
-          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+          initialRoute: '/',
+          routes: {
+            '/': (context) => const MyHomePage(title: 'Kanye Tweets'),
+            '/profile': (context) => const Profile(),
+          },
         );
       },
     );

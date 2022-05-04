@@ -1,33 +1,24 @@
-import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:kanye_tweets/repositories/tweet_repository.dart';
 
-import 'package:http/http.dart' as http;
+class TweetsController {
+  List tweets = [];
 
-Future main() async {
-  List list = [];
+  final state = ValueNotifier(TweetState.start);
+  final repository = TweetRepository();
 
-  for (var i = 0; i < 3; i++) {
-    final tweet = await fetch();
-    list.add(tweet);
-  }
+  Future start() async {
+    state.value = TweetState.loading;
 
-  print(list[0].quote);
-}
+    try {
+      var _newTweets = await repository.fetchTweets();
+      tweets = [...tweets, ..._newTweets];
 
-Future<Tweet> fetch() async {
-  var url = 'https://api.kanye.rest';
-  var response = await http.get(Uri.parse(url));
-  var json = jsonDecode(response.body);
-
-  var tweet = Tweet.fromJson(json);
-  return tweet;
-}
-
-class Tweet {
-  final String quote;
-
-  Tweet({required this.quote});
-
-  factory Tweet.fromJson(Map json) {
-    return Tweet(quote: json['quote']);
+      state.value = TweetState.success;
+    } catch (e) {
+      state.value = TweetState.error;
+    }
   }
 }
+
+enum TweetState { start, loading, success, error }
