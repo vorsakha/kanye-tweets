@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:kanye_tweets/controllers/tweets_controller.dart';
 import 'package:kanye_tweets/views/home_view.dart';
 import 'package:kanye_tweets/views/profile_view.dart';
+import 'package:provider/provider.dart';
 
 import 'controllers/theme_controller.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => TweetController(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  final String title = 'Kanye Tweets';
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +26,7 @@ class MyApp extends StatelessWidget {
       animation: AppController.instance,
       builder: (context, child) {
         return MaterialApp(
-          title: 'Kanye Tweets',
+          title: title,
           theme: ThemeData(
             brightness: AppController.instance.isDarkThemed
                 ? Brightness.dark
@@ -26,7 +35,7 @@ class MyApp extends StatelessWidget {
           ),
           initialRoute: '/',
           routes: {
-            '/': (context) => const MyHomePage(title: 'Kanye Tweets'),
+            '/': (context) => MyHomePage(title: title),
             '/profile': (context) => const Profile(),
           },
         );
