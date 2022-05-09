@@ -8,18 +8,22 @@ class Timeline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      scrollDirection: Axis.vertical,
-      physics: ModalRoute.of(context)?.settings.name as String != "/profile"
-          ? null
-          : const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: list.length,
-      itemBuilder: (context, index) {
-        return Tweet(
-            tweet: list[index],
-            color: index % 2 == 0 ? Colors.white : Colors.white);
-      },
+    return Scrollbar(
+      isAlwaysShown: true,
+      showTrackOnHover: true,
+      child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        physics: ModalRoute.of(context)?.settings.name as String != "/profile"
+            ? null
+            : const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: list.length,
+        itemBuilder: (context, index) {
+          return Tweet(
+              tweet: list[index],
+              color: index % 2 == 0 ? Colors.white : Colors.white);
+        },
+      ),
     );
   }
 }

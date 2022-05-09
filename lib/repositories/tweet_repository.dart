@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 
 class TweetRepository {
   final _url = 'https://api.kanye.rest';
-  final _listSize = 3;
+  final _listSize = 5;
 
   final _dio = Dio();
 

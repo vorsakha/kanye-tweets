@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kanye_tweets/views/profile_view.dart';
 
 class Tweet extends StatelessWidget {
   final String tweet;
