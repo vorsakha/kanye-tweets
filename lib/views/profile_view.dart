@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kanye_tweets/components/profile/profile_body.dart';
 import 'package:kanye_tweets/components/profile/profile_header.dart';
+import 'package:kanye_tweets/components/switch.dart';
 import 'package:kanye_tweets/components/timeline.dart';
 import 'package:kanye_tweets/controllers/tweets_controller.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +27,6 @@ class _ProfileState extends State<Profile> {
       controller.startDownstream();
     });
 
-    // doesn't work bc Timeline ListView is not scrollable at /profile
     _scrollController = ScrollController(keepScrollOffset: true);
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
@@ -116,7 +116,13 @@ class _ProfileState extends State<Profile> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            Text('Profile'),
+            CustomSwitch(),
+          ],
+        ),
       ),
       body: AnimatedBuilder(
         animation: controller.state,
