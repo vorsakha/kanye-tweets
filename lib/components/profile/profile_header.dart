@@ -79,7 +79,11 @@ class Header extends StatelessWidget {
               const SizedBox(height: 15),
               Row(
                 children: [
-                  const Icon(Icons.link, size: 16),
+                  Icon(
+                    Icons.link,
+                    size: 16,
+                    color: Theme.of(context).colorScheme.tertiary,
+                  ),
                   const SizedBox(width: 5),
                   InkWell(
                     child: Text(
@@ -91,7 +95,11 @@ class Header extends StatelessWidget {
                         {launchUrl(Uri.parse('https://kanyewest.com/'))},
                   ),
                   const SizedBox(width: 20),
-                  const Icon(Icons.calendar_month, size: 16),
+                  Icon(
+                    Icons.calendar_month,
+                    size: 16,
+                    color: Theme.of(context).colorScheme.tertiary,
+                  ),
                   const SizedBox(width: 5),
                   Text(
                     'Joined july 2010',
