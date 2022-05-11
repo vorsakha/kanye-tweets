@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kanye_tweets/components/switch.dart';
 import 'package:kanye_tweets/components/timeline.dart';
-import 'package:kanye_tweets/controllers/theme_controller.dart';
 import 'package:kanye_tweets/controllers/tweets_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -94,9 +94,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pushNamed(context, '/profile');
               },
               child: const CircleAvatar(
-                backgroundImage: AssetImage('assets/images/ye.jpg'),
-                backgroundColor: Colors.black,
-                radius: 20,
+                radius: 21,
+                backgroundColor: Colors.white,
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/ye.jpg'),
+                  radius: 20,
+                ),
               ),
             ),
             IconButton(
@@ -104,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   controller.startUpstream();
                 },
                 icon: const Icon(Icons.upgrade)),
-            CustomSwitch(),
+            const CustomSwitch(),
           ],
         ),
       ),
@@ -114,20 +117,6 @@ class _MyHomePageState extends State<MyHomePage> {
           return stateManagement(controller.state.value);
         },
       ),
-    );
-  }
-}
-
-class CustomSwitch extends StatelessWidget {
-  CustomSwitch({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Switch(
-      value: AppController.instance.isDarkThemed,
-      onChanged: (value) {
-        AppController.instance.changeTheme();
-      },
     );
   }
 }

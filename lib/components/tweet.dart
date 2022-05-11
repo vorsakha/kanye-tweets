@@ -11,7 +11,7 @@ class Tweet extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.fromLTRB(15, 30, 15, 30),
       decoration: BoxDecoration(
-        color: color ?? Colors.redAccent,
+        color: Theme.of(context).colorScheme.secondary,
         border: const Border(
             bottom: BorderSide(
           width: 0.5,
@@ -28,9 +28,13 @@ class Tweet extends StatelessWidget {
                   : null;
             },
             child: const CircleAvatar(
-              backgroundImage: AssetImage('assets/images/ye.jpg'),
-              backgroundColor: Colors.black,
-              radius: 30,
+              backgroundColor: Colors.white,
+              radius: 31,
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/images/ye.jpg'),
+                backgroundColor: Colors.black,
+                radius: 30,
+              ),
             ),
           ),
           const SizedBox(width: 10),
@@ -39,8 +43,8 @@ class Tweet extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       'ye',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
@@ -48,15 +52,16 @@ class Tweet extends StatelessWidget {
                     Icon(
                       Icons.verified,
                       size: 16,
-                      color: Colors.red,
+                      color: Theme.of(context).colorScheme.tertiary,
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Text(
                       '@kanyewest',
                       style: TextStyle(
-                          fontWeight: FontWeight.w200, color: Colors.red),
+                          fontWeight: FontWeight.w200,
+                          color: Theme.of(context).colorScheme.tertiary),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                   ],
                 ),
                 const SizedBox(width: 15),

@@ -19,9 +19,7 @@ class Timeline extends StatelessWidget {
         shrinkWrap: true,
         itemCount: list.length,
         itemBuilder: (context, index) {
-          return Tweet(
-              tweet: list[index],
-              color: index % 2 == 0 ? Colors.white : Colors.white);
+          return Tweet(tweet: list[index]);
         },
       ),
     );

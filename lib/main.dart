@@ -23,16 +23,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: AppController.instance,
+      animation: ThemeController.instance,
       builder: (context, child) {
         return MaterialApp(
           title: title,
-          theme: ThemeData(
-            brightness: AppController.instance.isDarkThemed
-                ? Brightness.dark
-                : Brightness.light,
-            primarySwatch: Colors.red,
-          ),
+          theme: ThemeController.lightTheme,
+          darkTheme: ThemeController.darkTheme,
+          themeMode: currentTheme.currentTheme,
           initialRoute: '/',
           routes: {
             '/': (context) => MyHomePage(title: title),
